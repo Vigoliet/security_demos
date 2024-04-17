@@ -3,14 +3,13 @@ package org.example;
 import software.amazon.awssdk.core.waiters.WaiterResponse;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.iam.IamClient;
-import software.amazon.awssdk.services.iam.IamClientBuilder;
 import software.amazon.awssdk.services.iam.model.*;
 import software.amazon.awssdk.services.iam.waiters.IamWaiter;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
+public class IamDemo {
     public static void main(String[] args) {
         Region region = Region.AWS_GLOBAL;
         IamClient iam = IamClient.builder()
