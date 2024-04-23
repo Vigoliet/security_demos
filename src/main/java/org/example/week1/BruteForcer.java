@@ -1,8 +1,6 @@
-package org.example;
+package org.example.week1;
 
 import java.util.Scanner;
-
-import static org.example.SymmetricEncryption.decryptMessage;
 
 public class BruteForcer {
     public static void main(String[] args) {
