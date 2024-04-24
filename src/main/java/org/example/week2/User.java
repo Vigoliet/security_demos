@@ -42,4 +42,14 @@ public class User {
     public void setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", hashedPassword='" + hashedPassword + '\'' +
+                '}';
+    }
 }

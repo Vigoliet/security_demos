@@ -31,11 +31,7 @@ public class PasswordDemos {
         var scanner = new Scanner(System.in);
         var userService = new UserService();
 
-
-
-
         while (true) {
-
             System.out.println("""
                     -1 to register
                     -2 to login
@@ -46,11 +42,9 @@ public class PasswordDemos {
                 case 1:
                     registerSwitch(scanner, userService);
                     break;
-
                 case 2:
                     loginSwitch(scanner, userService);
                     break;
-
                 case 3:
                     System.exit(0);
                     break;
@@ -70,14 +64,20 @@ public class PasswordDemos {
         System.out.println("Enter username:");
         var loginUsername = scanner.next();
 
+        User user = userService.getUserByUsername(loginUsername);
+        if (user == null) {
+            System.out.println("User not found");
+            return;
+        }
+
         System.out.println("Enter password:");
         var loginPassword = scanner.next();
 
-        var saltFromUser = userService.getSalt(loginUsername); // You need to implement this method in UserService
+        var saltFromUser = userService.getSalt(loginUsername);
 
         var loginPassAndSalt = loginPassword + ":" + saltFromUser;
         var hashedLoginPassAndSalt = hashMd5(loginPassAndSalt) + ":" + saltFromUser;
-        userService.loginUser(loginUsername, hashedLoginPassAndSalt); // You need to implement this method in UserService
+        userService.loginUser(loginUsername, hashedLoginPassAndSalt);
     }
 
     private static void registerSwitch(Scanner scanner, UserService userService) throws SQLException {

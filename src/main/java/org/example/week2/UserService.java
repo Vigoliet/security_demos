@@ -25,6 +25,22 @@ public class UserService {
 
     // Get user (username) -> User
     // You can add the method to get user here
+    public User getUserByUsername(String username) throws SQLException {
+        String query = "SELECT * FROM users WHERE username = ?";
+
+        PreparedStatement preparedStatement = conn.prepareStatement(query);
+        preparedStatement.setString(1, username);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if (resultSet.next()) {
+            username = resultSet.getString("username");
+            String hashedPassword = resultSet.getString("hashed_password");
+            return new User(username, hashedPassword);
+        } else {
+            return null;
+        }
+    }
+
     public String getSalt(String username) throws SQLException {
         String query = "SELECT hashed_password FROM users WHERE username = ?";
 
