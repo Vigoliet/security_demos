@@ -43,6 +43,16 @@ public class User {
         this.hashedPassword = hashedPassword;
     }
 
+    public String getHash(){
+        var parts = hashedPassword.split(":");
+        return parts[0];
+    }
+
+    public String getSalt(){
+        var parts = hashedPassword.split(":");
+        return parts[1];
+    }
+
 
     @Override
     public String toString() {
